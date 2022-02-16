@@ -1,4 +1,5 @@
 const { assert } = require("chai");
+const { ethers } = require("hardhat");
 
 describe("Game1", function() {
   it("should be a winner", async function() {
@@ -6,7 +7,7 @@ describe("Game1", function() {
     const game = await Game.deploy();
     await game.deployed();
 
-    // you must call unlock before you can win
+    await game.unlock();
 
     await game.win();
 
